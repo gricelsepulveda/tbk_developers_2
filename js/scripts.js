@@ -17,7 +17,7 @@ $(document).ready(function(){
                                               "height":''
                                           });
           $(".cg-main_header").css({
-                                "overflow-y":'hidden'
+                                "overflow-y":''
                             });
           $(".cg-mobile_menu").removeClass("cg-mobile_menu_active");
         }
