@@ -13,6 +13,8 @@ html lang="es"
     script src="js/scripts.js"
     /! BOOTSTRAP GRID & RESPONSIVE UTILITIES
     link rel="stylesheet" href="css/bootstrap.css"
+    /! FONT AWESOME
+    link rel="stylesheet" href="css/font-awesome.css"
     /! CUSTOM STYLES
     link rel="stylesheet" href="css/styles.css"
     /! FAVICON
@@ -90,10 +92,10 @@ html lang="es"
             a.link href="#"
               li.text_li F.A.Q.
           a.login href="#"
-            figure#fig_login onclick="sesion_on()"
+            figure#fig_login onclick="login_pop()"
               .icon-caret_menu
               .icon-log_in
-            span#txt_login onclick="sesion_on()"
+            span#txt_login onclick="login_pop()"
               |ingresar
             figure#fig_profile
               .icon-caret_menu
@@ -127,6 +129,30 @@ html lang="es"
           span Powered by
           a href="http://www.cumbregroup.com" 
             img src="img/cumbregroup.svg"
+    /! POPUP
+    .pop_background
+    .pop_wrapper
+      .pop_content
+        nav.pop_nav
+          | iniciar sesión
+          button.close_pop type="button" onclick="close_login_pop()"
+            i class="fa fa-times" aria-hidden="true"
+        .pop_body
+          form.form_pop
+            .input
+              button.input_btn
+                i class="fa fa-user" aria-hidden="true"
+              input type="text" placeholder="usuario"
+            .input
+              button.input_btn
+                i class="fa fa-unlock-alt" aria-hidden="true"
+              input type="password" placeholder="contraseña"
+            button type="button" onclick="sesion_on()"
+              i class="fa fa-arrow-right" aria-hidden="true"
+              .icon-caret_menu
+              span iniciar sesión
+
+
 
 
 

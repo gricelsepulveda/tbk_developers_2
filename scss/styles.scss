@@ -4,7 +4,7 @@
 //CUSTOM ICONS FONTS
 @font-face 
 {
-    font-family: 'icons';
+    font-family: 'Glyphter';
     src: url('../fonts/custom_icons/icons.eot');
     src: url('../fonts/custom_icons/icons.eot?#iefix') format('embedded-opentype'),
          url('../fonts/custom_icons/icons.woff') format('woff'),
@@ -16,7 +16,7 @@
 [class*='icon-']:before
 {
   display: inline-block;
-  font-family: 'icons';
+  font-family: 'Glyphter';
   font-style: normal;
   font-weight: normal;
   line-height: 1;
@@ -31,11 +31,6 @@
 .icon-sdk:before{content:'\0046';}
 .icon-menu:before{content:'\0047';}
 .icon-user:before{content:'\0048';}
-.icon-cancel:before{content:'\0049';}
-.icon-arrow:before{content:'\0050';}
-.icon-close:before{content:'\0051';}
-.icon-pass:before{content:'\0052';}
-.icon-ask:before{content:'\0053';}
 
 //GENERAL BREAKPOINTS
 $xxs: "(max-width: 340px)";
@@ -892,6 +887,234 @@ p, h1, h2, h3, h4, h5, h6, span
   }
 }
 
+//POP UP LOGIN
+
+.pop_background
+{
+  background-color: rgba($black, 0.85);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  display: none;
+}
+.pop_wrapper
+{
+  background-color: transparent;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 21;
+  @include flex_column;
+  justify-content: center;
+  display: none;
+  .pop_content
+  {
+    width: 80vw;
+    height: 50vh;
+    background-color: $white;
+    position: relative;
+    @include box_shadow;
+    @media #{$sm}
+    {
+      width: 90vw;
+    }
+    .pop_nav
+    {
+      z-index: 23;
+      background-color: $purple;
+      color: $white;
+      position: absolute; 
+      top: 0;
+      left: 0;
+      width: 80vw;
+      height: 2.4rem;
+      line-height: 2.4rem;
+      padding: 0rem 0rem 0rem 1rem;
+      text:
+      {
+        align: center;
+        transform: uppercase;
+      }
+      font: 
+      {
+        size: 1.2rem;
+        weight: 600;
+      }
+      @media #{$sm}
+      {
+        width: 90vw;
+        text-align: left;
+      }
+      button 
+      {
+        background-color: $white;
+        color: $purple;
+        width: 2.4rem;
+        border: 1px solid $purple;
+        height: 2.4rem;
+        text-align: center;
+        line-height: 2.4rem;
+        font-size: 1.05rem;
+        cursor: pointer;
+        float: right;
+        @include animate;
+        &:hover 
+        {
+          background-color: $purple;
+          color: $white;
+        }
+      }
+    }
+    .pop_body 
+    {
+      @include flex_column;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 50vh;
+      width: 80vw;
+      z-index: 22;
+      overflow-y: scroll;
+      padding: 3.4rem 1rem 1rem 1rem;
+      @media #{$sm}
+      {
+        width: 90vw;
+      }
+    }
+  }
+}
+
+.form_pop
+{
+  @include flex_column;
+  justify-content: center;
+  position:relative;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  .input 
+  {
+    display: inline-block;
+    width: 12.4rem;
+    height: 2.4rem;
+    position: relative;
+    margin-bottom: 0.5rem;
+    .input_btn
+    {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $purple;
+      color: $white;
+      width: 2.4rem;
+      height: 2.4rem;
+      @include animate;
+      text-align: center;
+      line-height: 2.4rem;
+      font-size: 1.05rem;
+    }
+    input 
+    {
+      background-color: $violet;
+      color: $white;
+      width: 10rem;
+      height: 2.4rem;
+      position: absolute;
+      right: 0;
+      top: 0;
+      text-align: center;
+      font:
+      {
+        size: 0.9rem;
+        family: 'Titillium Web', sans-serif;
+      }
+    }
+  }
+  > button 
+  {
+    position: relative;
+    width: 12.4rem;
+    height: 3.6rem;
+    border-radius: 0.25rem;
+    overflow: hidden;
+    border: 1px solid $purple;
+    cursor: pointer;
+    @include animate;
+    > i 
+    {
+      background-color: $purple;
+      color: $white;
+      font-size: 1.05rem;
+      line-height: 3.6rem;
+      height: 3.6rem;
+      width: 3.6rem;
+      text-align: center;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include animate;
+    }
+    .icon-caret_menu
+    {
+      position: absolute;
+      top: 1.05rem;
+      left: 3.3rem;
+      font-size: 1.05rem;
+      color: $purple;
+      z-index: 23;
+      transform: rotate(-90deg);
+      @include animate;
+    }
+    span 
+    {
+      background-color: $white;
+      height: 3.6rem;
+      width: 8.8rem;
+      position: absolute;
+      right: 0;
+      top: 0;
+      line-height: 3.6rem;
+      color: $purple;
+      font:
+      {
+        family: 'Titillium Web', sans-serif;
+        size: 1.05rem;
+        weight: 600;
+      }
+      text: 
+      {
+        align: center;
+        transform: uppercase;
+      }
+      @include animate;
+    }
+    &:hover 
+    {
+      i 
+      {
+        background-color: $white;
+        color: $purple;
+      }
+      .icon-caret_menu
+      {
+        color: $white;
+      }
+      span 
+      {
+        background-color: $purple;
+        color: $white;
+      }
+    }
+  }
+}
+
 // VIEW SPACE
 .views
 {
@@ -925,11 +1148,6 @@ p, h1, h2, h3, h4, h5, h6, span
     }
   }
 }
-
-
-
-
-
 
 
 
