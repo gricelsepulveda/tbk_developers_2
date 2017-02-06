@@ -1,0 +1,941 @@
+//FONTS
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900');
+
+//CUSTOM ICONS FONTS
+@font-face 
+{
+    font-family: 'icons';
+    src: url('../fonts/custom_icons/icons.eot');
+    src: url('../fonts/custom_icons/icons.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/custom_icons/icons.woff') format('woff'),
+         url('../fonts/custom_icons/icons.ttf') format('truetype'),
+         url('../fonts/custom_icons/icons.svg#icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+[class*='icon-']:before
+{
+  display: inline-block;
+  font-family: 'icons';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale
+}
+.icon-api_docs:before{content:'\0041';}
+.icon-caret_menu:before{content:'\0042';}
+.icon-log_in:before{content:'\0043';}
+.icon-log_off:before{content:'\0044';}
+.icon-plugins:before{content:'\0045';}
+.icon-sdk:before{content:'\0046';}
+.icon-menu:before{content:'\0047';}
+.icon-user:before{content:'\0048';}
+
+//GENERAL BREAKPOINTS
+$xxs: "(max-width: 340px)";
+$xs: "(max-width: 767px)";
+$sm: "(max-width: 991px)";
+$md: "(max-width: 1199px)";
+$lg: "(min-width: 1200px)";
+
+//CUSTOM BREAKPOINTS
+$xxs_absolute: "(min-width: 0px) and (max-width: 339px)";
+$xs_absolute: "(min-width: 340px) and (max-width: 767px)";
+$sm_absolute: "(min-width: 768px) and (max-width: 991px)";
+$md_absolute: "(min-width: 992px) and (max-width: 1199px)";
+$lg_absolute: "(min-width: 1200px)";
+
+//COLORES
+$white: #ffffff;
+$black: #383838;
+$gray: #F4F4F4;
+$dark_purple: #302A3A;
+$purple: #483078;
+$violet: #604878;
+
+//AUX MIXINGS 
+@mixin zero 
+{
+  padding: 0;
+  margin: 0;
+}
+@mixin animate
+{
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+}
+@mixin box_shadow
+{
+  -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow:    1px 1px 3px 0px rgba(0, 0, 0, 0.25);
+  box-shadow:         1px 1px 3px 0px rgba(0, 0, 0, 0.25);
+}
+@mixin dark_shadow
+{
+  -webkit-box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow:    1px 1px 4px 0px rgba(0, 0, 0, 0.4);
+  box-shadow:         1px 1px 4px 0px rgba(0, 0, 0, 0.4);
+}
+@mixin text_shadow
+{
+  -webkit-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  -moz-text-shadow:    1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+//SCROLLBARS
+::-webkit-scrollbar 
+{
+  width: 5px;
+  /*position: absolute;
+  top: 0;
+  right: 0;*/
+  @include animate;
+}
+
+::-webkit-scrollbar-track 
+{
+  background: $white;
+  @include animate;
+}
+
+.scrollable-content::-webkit-scrollbar * 
+{
+  background: $white;
+}
+
+::-webkit-scrollbar-thumb 
+{
+  background: $violet;
+  @include animate;
+}
+ 
+//RESETS AND OTHER PROPERITIES
+html, body
+{
+  font-size: 20px; //REM
+  font-family: 'Titillium Web', 'Arial', sans-serif;
+  @include zero;
+  padding-top: 2.2rem;
+  min-height: 100vh;
+  overflow-x: hidden;
+  @media #{$md}
+  {
+    font-size: 15px;
+    padding-top: 2rem;
+  }
+  @media #{$sm}
+  {
+    font-size: 20px;
+    padding-top: 3.1rem;
+  }
+}
+
+.no_margin > [class*='col-'] //AVOID MARGINS ON BOOTSTRAP
+{
+  padding-right: 0;
+  padding-left: 0;
+}
+
+button, input, textarea, label, option, figure //CLEAN DEFAULT PROPERTIES
+{ 
+  box-shadow: none;
+  outline: none;
+  border-radius: 0;
+  border: none;
+  @include zero;
+  &:hover, &:active, &:visited, &:focus
+  {
+    outline: none;
+    border: none;
+  }
+}
+
+ul, li //CLEAN DEFAULT PROPERTIES
+{ 
+  text-indent: none;
+  list-style-type: none;
+  @include zero;
+}
+
+a, a:hover, a:active, a:visited, a:focus //CLEAN DEFAULT PROPERTIES
+{ 
+  text: 
+  {
+    decoration: inherit;
+    decoration: none;
+  }
+  color: inherit;
+  @include zero;
+}
+
+p, h1, h2, h3, h4, h5, h6, span
+{
+  @include zero;
+  -webkit-text-shadow: none;
+  -moz-text-shadow: none;
+  text-shadow: none;
+  text: 
+  {
+    decoration: inherit;
+    decoration: none;
+  }
+  font:
+  {
+    family: inherit;
+    size: inherit;
+  }
+  color: inherit;
+}
+
+//FLEXBOX MIXINGS
+@mixin flex_center
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+}
+
+@mixin flex_column
+{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+}
+
+//MENU HEADER START
+.main_header
+{
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: auto;
+  @media #{$sm}
+  {
+    max-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    //SCROLLBARS
+    &::-webkit-scrollbar
+    {
+      color: transparent;
+      background: transparent;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-track
+    {
+      color: transparent;
+      background: transparent;
+      background-color: transparent;
+    }
+    .scrollable-content::-webkit-scrollbar *
+    {
+      color: transparent;
+      background: transparent;
+      background-color: transparent;
+    } 
+    &::-webkit-scrollbar-thumb
+    {
+      color: transparent;
+      background: transparent;
+      background-color: transparent;
+    } 
+  }
+  background-color: $dark_purple;
+  z-index: 2;
+  .main
+  {
+    @include flex_center;
+    justify-content: space-between;
+    position: relative;
+    padding: 0rem 1rem 0rem 1rem;
+    @include box_shadow;
+    @media #{$sm}
+    {
+      @include flex_column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0rem;
+    }
+    .bg
+    {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      &::after
+      {
+        content: "";
+        display: block;
+        background:
+        {
+          image: url(../img/bg_main_nav.svg);
+          size: cover;
+          position: center;
+          repeat: no-repeat;
+        }
+        opacity: 0.05;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        height:  100%;
+        width: 100%;
+        //NAV ANIMATION
+        animation-name: nav_cycle;
+        animation-timing-function: ease;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        transform-style: preserve-3d;
+        @keyframes nav_cycle
+        {
+          from
+          { 
+            transform: scale(1) translateZ(0px) rotateY(0deg) rotateX(0deg);    
+          }
+          50%
+          {
+            transform: scale(1.5) translateZ(10px) rotateY(45deg) rotateX(45deg);
+          }
+          to
+          { 
+            transform: scale(1) translateZ(0px) rotateY(0deg) rotateX(0deg);
+          }
+        }
+      }
+    }
+    .home
+    {
+      display: inline-block;
+      position: relative;
+      width: 200px;
+      height: 32px;
+      z-index: 4;
+      text-align: left;
+      img 
+      {
+        width: 200px;
+        height: 32px;
+        position: relative;
+        display: inline-block;
+        text-align: left;
+      }
+      @media #{$sm}
+      {
+        display: block;
+        margin-right: 4.6rem;
+        height: 3.6rem;
+        margin-top: 1rem;
+        margin-left: 1rem;
+        line-height: 3.6rem;
+        img 
+        {
+          width: 100%;
+          vertical-align: middle;
+          height: auto;
+          position: relative;
+        }
+      }
+    }
+    .wrapper
+    {
+      overflow: inherit;
+      @media #{$sm}
+      {
+        overflow: hidden;
+        display: block;
+        width: 100vw;
+        height: 0px;
+        @include zero;
+        margin-top: 1rem;
+        text-align: center;
+        @include animate;
+      }
+      > ul 
+      {
+        z-index: 4;
+        display: inline-block;
+        width: auto;
+        font:
+        {
+          size: 1.05rem;
+          weight: 300;
+        }
+        position: relative;
+        @media #{$sm}
+        {
+          display: block;
+        }
+        .link 
+        {
+          display: inline-block;
+          width: auto;
+          padding: 1rem 0.75rem 1rem 0.75rem;
+          position: relative;
+          color: $white;
+          cursor: pointer;
+          margin-right: 0.25rem;
+          @include animate;
+          &:hover 
+          {
+            background-color: rgba($violet, 0.5);
+            border-radius: 0.25rem 0.25rem 0rem 0rem;
+            color: $white;
+          }
+          .text_li
+          {
+            display: inline-block;
+            position: relative;
+            .icon-caret_menu
+            {
+              display: inline-block;
+              margin-left: 0.5rem;
+              font-size: 0.75rem;
+            }
+            .submenu
+            {
+              display: block;
+              position: absolute;
+              top: 0;
+              left: -0.8rem;
+              width: 11.2rem;
+              z-index: 1;
+              margin-top: 2.635rem;
+              background-color: $gray;
+              height: 0px;
+              overflow: hidden;
+              @include animate;
+              @media #{$sm} 
+              {
+                position: relative;
+                left: 0;
+                top: 0;
+                width: auto;
+                margin-top: 0.75rem;
+                margin-bottom: -0.95rem;
+              }
+              .sm_option 
+              {
+                cursor: default;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: center;
+                align-content: center;
+                justify-content: flex-start;
+                width: auto;
+                padding: 0.75rem 2rem 0.75rem 2rem;
+                font: 
+                {
+                  size: 1.05rem;
+                  weight: 700;
+                }
+                color: $black;
+                background-color: darken($gray, 5%);
+                position: relative;
+                text-align: left;
+                .icon-api_docs, .icon-sdk, .icon-plugins
+                {
+                  display: inline;
+                  position: relative;
+                  margin-right: 0.5rem;
+                }
+                span 
+                {
+                  display: inline;
+                  position: relative;
+                  width: auto;
+                }
+              }
+              .link_tools
+              {
+                cursor: pointer;
+                font-weight: 300;
+                padding-left: 3.5rem;
+                @include animate;
+                background-color: $gray;
+                &:hover
+                {
+                  background-color: $purple;
+                  color: $white;
+                }
+              }
+            }
+          }
+          @media #{$sm}
+          {
+            display: block;
+            border-bottom: 1px solid $violet;
+            text-align: center;
+            margin-right: 0;
+            &:hover
+            {
+              border-radius: 0rem;
+            }
+            .text_li
+            {
+              display: block;
+              margin-left: 0;
+            }
+          }
+        }
+        .tools_drop
+        {
+          @media #{$sm}
+          {
+            padding-right: 0rem;
+            padding-left: 0rem;
+            border-radius: 0;
+          }
+        }
+        .active 
+        {
+          background-color: $white;
+          color: $purple;
+          border-radius: 0.25rem 0.25rem 0rem 0rem;
+          &:hover
+          {
+            background-color: $white;
+            color: $purple;
+          }
+          @media #{$sm}
+          {
+            border-radius: 0;
+            &:hover
+            {
+              border-radius: 0;
+            }
+          }
+        }
+      }
+      .login 
+      { 
+        display: inline-block;
+        position: relative;
+        margin: 0.5rem 0rem 0rem 0rem;
+        border-radius: 0.25rem 0.25rem 0rem 0rem;
+        cursor: pointer;
+        z-index: 4;
+        @include animate;
+        @media #{$sm}
+        {
+          margin: 0.5rem 0rem 0.5rem 0rem;
+        }
+        figure 
+        {
+          background-color: $purple;
+          display: inline-block;
+          height: 100%;
+          padding: 1rem 1.25rem 1rem 1.25rem;
+          text-align: center;
+          border-radius: 0.25rem 0rem 0rem 0rem;
+          font-size: 1.05rem;
+          color: $white;
+          position: relative;
+          @include animate;
+          .icon-caret_menu
+          {
+            position: absolute;
+            display: inline-block;
+            transform: rotate(-90deg);
+            right: -0.8rem;
+            top: 0.9rem;
+            color: $purple;
+            @include animate;
+          }
+        }
+        span
+        {
+          margin-left: -0.25rem;
+          background-color: $white;
+          border-radius: 0rem 0.25rem 0rem 0rem;
+          color: $purple;
+          padding: 1rem 0.75rem 1rem 0.75rem;
+          display: inline-block;
+          font:
+          {
+            size: 1.05rem;
+            weight: 600;
+          }
+          text: 
+          {
+            transform: uppercase;
+            align: center;
+          }
+          @include animate;
+        }
+        &:hover
+        {
+          figure 
+          {
+            .icon-caret_menu
+            {
+              color: $white;
+            }
+            background-color: $white;
+            color: $purple;
+          }
+          span 
+          {
+            background-color: $purple;
+            color: $white;
+          }
+        }
+      }
+    }
+    .mobile_menu
+    {
+      display: none;
+      @media #{$sm}
+      {
+        cursor: pointer;
+        @include animate;
+        z-index: 4;
+        display: block;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        background-color: $white;
+        width: 3.6rem;
+        height: 3.6rem;
+        border-radius: 0.25rem;
+        color: $purple;
+        font-size: 1.05rem;
+        line-height: 3.6rem;
+        text-align: center;
+        &:hover
+        {
+          background-color: $purple;
+          color: $white;
+        }
+      }
+    }
+    .mobile_menu_active
+    {
+      background-color: $purple;
+      color: $white;
+    }
+  }
+}
+
+//LOGIN AND LOGOUT BUTTON
+
+#fig_profile
+{
+  display: none;
+}
+#txt_logoff
+{
+  display: none;
+  height: 100%;
+  padding: 1rem 1.25rem 1rem 1.25rem;
+  text-align: center;
+  border-radius: 0rem 0.25rem 0rem 0rem;
+  font-size: 1.05rem;
+  position: relative;
+}
+
+.seccion_header
+{
+  display: block;
+  width: 100vw;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  @media #{$xs}
+  {
+    overflow: visible;
+    height: auto;
+  }
+  &:after
+  {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    z-index: 0;
+    width: 100%;
+    height: 400px;
+    background: rgba(255,255,255,0);
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(129,125,135,0) 61%, rgba(48,42,58,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,0)), color-stop(61%, rgba(129,125,135,0)), color-stop(100%, rgba(48,42,58,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(129,125,135,0) 61%, rgba(48,42,58,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(129,125,135,0) 61%, rgba(48,42,58,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(129,125,135,0) 61%, rgba(48,42,58,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(129,125,135,0) 61%, rgba(48,42,58,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#302a3a', GradientType=0 );
+  }
+  .img_header
+  {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    @media #{$xs}
+    {
+      overflow: visible;
+      height: auto;
+    }
+    img 
+    {
+      width: 100%;
+      height: auto;
+      text-align: center;
+      position: relative;
+    }
+  }
+}
+
+.titles
+{
+  h1 
+  {
+    width: 15rem;
+    display: inline-block;
+    position: relative;
+    background-color: rgba($violet, 0.75);
+    padding: 1rem;
+    font:
+    {
+      size: 1.6rem;
+      weight: 700;
+    }
+    color: $white;
+    text-align: left;
+    z-index: 1;
+    margin-left: 8rem;
+    margin-top: -4rem;
+    @media #{$sm}
+    {
+      display: block;
+      margin: 0 auto;
+      margin-top: -4rem;
+      width: 80vw;
+      text-align: center;
+    }
+  }
+  .description
+  {
+    display: block;
+    position: relative;
+    color: $black;
+    font:
+    {
+      size: 1.2rem;
+      weight:600;
+    }
+    float: right;
+    margin-right: 8rem;
+    margin-top: 1rem;
+    @media #{$sm}
+    {
+      float: inherit;
+      margin: 0 auto;
+      margin-top: 0.5rem;
+      margin-bottom: 2rem;
+      padding: 0rem 1rem 0rem 1rem;
+      text-align: center;
+    }
+  }
+}
+
+// MENU HEADER END
+
+
+//FOOTER
+.footer_tbk 
+{
+  display: block;
+  background-color: $dark_purple;
+  padding: 1rem 4rem 1rem 4rem;
+  width: 100vw;
+  height: auto;
+  position: relative;
+  color: $white;
+  @media #{$sm}
+  {
+    text-align: center;
+  }
+  img 
+  {
+    display: block;
+    &:first-of-type
+    {
+      width: 12rem;
+    }
+    &:nth-of-type(2)
+    {
+      width: 6rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    @media #{$sm}
+    {
+      display: inline-block;
+      &:nth-of-type(2)
+      {
+        width: 6rem;
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  a 
+  {
+    font:
+    {
+      size: 0.9rem;
+      weight: 600;
+    }
+    text:
+    {
+      transform: uppercase;
+      letter-spacing: 2px;
+    }
+    cursor: pointer;
+    padding-bottom: 0.25rem;
+    border: 1px solid transparent;
+    &:hover
+    {
+      border-bottom: 1px solid $white;
+    }
+    @media #{$sm}
+    {
+      display: block;
+      position: relative;
+      margin: 0 auto;
+      background-color: $purple;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      border-radius: 0.25rem;
+      margin-top: 2rem;
+      border-bottom: 0;
+      @include animate;
+      &:hover 
+      {
+        background-color: $violet;
+        border-bottom: 0;
+      }
+    }
+  }
+  span 
+  {
+    display: block;
+    font:
+    {
+      size: 0.9rem;
+      weight: 300;
+    }
+    text:
+    {
+      align: right;
+    }
+    @media #{$sm}
+    {
+      position: relative;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 2rem;
+    }
+  }
+  .right 
+  {
+    text-align: right;
+    a 
+    {
+      display: inline-block;
+      text-align: right;
+      position: relative;
+      margin-top: 0.25rem;
+      img 
+      {
+        width: 7.5rem;
+        position: relative;
+        text-align: right;
+        display: inline-block;
+      }
+    }
+    @media #{$sm}
+    {
+      text-align: center;
+      a 
+      {
+        text-align: center;
+        padding: 0;
+        background-color: transparent;
+        border-bottom: 0;
+        &:hover 
+        {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+// VIEW SPACE
+.views
+{
+  background-color: $gray;
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  margin-top: -2rem;
+  @media #{$sm}
+  {
+    margin-top: 0rem;
+  }
+  .view_wrapper
+  {
+    background-color: $white;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    @media #{$sm}
+    {
+      padding-top: 0rem;
+    }
+    p 
+    {
+      text-align: justify;
+      color: $black;
+      font:
+      {
+        size: 0.9rem;
+        weight: 400;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
