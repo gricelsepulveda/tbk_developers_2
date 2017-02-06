@@ -10,7 +10,7 @@
 "creatorBuild": "25504",
 "files": {
 	"\/config.rb": {
-		"ft": 131072,
+		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/config.rb",
 		"oF": 0
@@ -35,10 +35,10 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"\/fonts\/custom_icons\/icons": {
+	"\/fonts\/custom_icons\/icons.eot": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/fonts\/custom_icons\/icons",
+		"oAP": "\/fonts\/custom_icons\/icons.eot",
 		"oF": 0
 		},
 	"\/fonts\/custom_icons\/icons.svg": {
