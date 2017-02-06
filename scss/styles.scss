@@ -23,14 +23,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale
 }
-.icon-api_docs:before{content:'\0041';}
-.icon-caret_menu:before{content:'\0042';}
-.icon-log_in:before{content:'\0043';}
-.icon-log_off:before{content:'\0044';}
-.icon-plugins:before{content:'\0045';}
-.icon-sdk:before{content:'\0046';}
-.icon-menu:before{content:'\0047';}
-.icon-user:before{content:'\0048';}
+.cg-icon-api_docs:before{content:'\0041';}
+.cg-icon-caret_menu:before{content:'\0042';}
+.cg-icon-log_in:before{content:'\0043';}
+.cg-icon-log_off:before{content:'\0044';}
+.cg-icon-plugins:before{content:'\0045';}
+.cg-icon-sdk:before{content:'\0046';}
+.cg-icon-menu:before{content:'\0047';}
+.cg-icon-user:before{content:'\0048';}
 
 //GENERAL BREAKPOINTS
 $xxs: "(max-width: 340px)";
@@ -210,7 +210,7 @@ p, h1, h2, h3, h4, h5, h6, span
 }
 
 //MENU HEADER START
-.main_header
+.cg-main_header
 {
   display: block;
   position: fixed;
@@ -251,7 +251,7 @@ p, h1, h2, h3, h4, h5, h6, span
   }
   background-color: $dark_purple;
   z-index: 2;
-  .main
+  .cg-main
   {
     @include flex_center;
     justify-content: space-between;
@@ -265,7 +265,7 @@ p, h1, h2, h3, h4, h5, h6, span
       align-items: flex-start;
       padding: 0rem;
     }
-    .bg
+    .cg-bg
     {
       display: block;
       position: absolute;
@@ -316,7 +316,7 @@ p, h1, h2, h3, h4, h5, h6, span
         }
       }
     }
-    .home
+    .cg-home
     {
       display: inline-block;
       position: relative;
@@ -349,7 +349,7 @@ p, h1, h2, h3, h4, h5, h6, span
         }
       }
     }
-    .wrapper
+    .cg-wrapper
     {
       overflow: inherit;
       @media #{$sm}
@@ -378,7 +378,7 @@ p, h1, h2, h3, h4, h5, h6, span
         {
           display: block;
         }
-        .link 
+        .cg-link 
         {
           display: inline-block;
           width: auto;
@@ -394,17 +394,17 @@ p, h1, h2, h3, h4, h5, h6, span
             border-radius: 0.25rem 0.25rem 0rem 0rem;
             color: $white;
           }
-          .text_li
+          .cg-text_li
           {
             display: inline-block;
             position: relative;
-            .icon-caret_menu
+            .cg-icon-caret_menu
             {
               display: inline-block;
               margin-left: 0.5rem;
               font-size: 0.75rem;
             }
-            .submenu
+            .cg-submenu
             {
               display: block;
               position: absolute;
@@ -426,7 +426,7 @@ p, h1, h2, h3, h4, h5, h6, span
                 margin-top: 0.75rem;
                 margin-bottom: -0.95rem;
               }
-              .sm_option 
+              .cg-sm_option 
               {
                 cursor: default;
                 display: flex;
@@ -446,7 +446,7 @@ p, h1, h2, h3, h4, h5, h6, span
                 background-color: darken($gray, 5%);
                 position: relative;
                 text-align: left;
-                .icon-api_docs, .icon-sdk, .icon-plugins
+                .cg-icon-api_docs, .cg-icon-sdk, .cg-icon-plugins
                 {
                   display: inline;
                   position: relative;
@@ -459,7 +459,7 @@ p, h1, h2, h3, h4, h5, h6, span
                   width: auto;
                 }
               }
-              .link_tools
+              .cg-link_tools
               {
                 cursor: pointer;
                 font-weight: 300;
@@ -484,14 +484,14 @@ p, h1, h2, h3, h4, h5, h6, span
             {
               border-radius: 0rem;
             }
-            .text_li
+            .cg-text_li
             {
               display: block;
               margin-left: 0;
             }
           }
         }
-        .tools_drop
+        .cg-tools_drop
         {
           @media #{$sm}
           {
@@ -500,7 +500,7 @@ p, h1, h2, h3, h4, h5, h6, span
             border-radius: 0;
           }
         }
-        .active 
+        .cg-active 
         {
           background-color: $white;
           color: $purple;
@@ -520,7 +520,7 @@ p, h1, h2, h3, h4, h5, h6, span
           }
         }
       }
-      .login 
+      .cg-login 
       { 
         display: inline-block;
         position: relative;
@@ -545,7 +545,7 @@ p, h1, h2, h3, h4, h5, h6, span
           color: $white;
           position: relative;
           @include animate;
-          .icon-caret_menu
+          .cg-icon-caret_menu
           {
             position: absolute;
             display: inline-block;
@@ -580,7 +580,7 @@ p, h1, h2, h3, h4, h5, h6, span
         {
           figure 
           {
-            .icon-caret_menu
+            .cg-icon-caret_menu
             {
               color: $white;
             }
@@ -595,7 +595,7 @@ p, h1, h2, h3, h4, h5, h6, span
         }
       }
     }
-    .mobile_menu
+    .cg-mobile_menu
     {
       display: none;
       @media #{$sm}
@@ -622,7 +622,7 @@ p, h1, h2, h3, h4, h5, h6, span
         }
       }
     }
-    .mobile_menu_active
+    .cg-mobile_menu_active
     {
       background-color: $purple;
       color: $white;
@@ -632,11 +632,11 @@ p, h1, h2, h3, h4, h5, h6, span
 
 //LOGIN AND LOGOUT BUTTON
 
-#fig_profile
+#cg-fig_profile
 {
   display: none;
 }
-#txt_logoff
+#cg-txt_logoff
 {
   display: none;
   height: 100%;
@@ -647,7 +647,7 @@ p, h1, h2, h3, h4, h5, h6, span
   position: relative;
 }
 
-.seccion_header
+.cg-seccion_header
 {
   display: block;
   width: 100vw;
@@ -678,7 +678,7 @@ p, h1, h2, h3, h4, h5, h6, span
     background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(129,125,135,0) 61%, rgba(48,42,58,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#302a3a', GradientType=0 );
   }
-  .img_header
+  .cg-img_header
   {
     text-align: center;
     position: relative;
@@ -698,7 +698,7 @@ p, h1, h2, h3, h4, h5, h6, span
   }
 }
 
-.titles
+.cg-titles
 {
   h1 
   {
@@ -726,7 +726,7 @@ p, h1, h2, h3, h4, h5, h6, span
       text-align: center;
     }
   }
-  .description
+  .cg-description
   {
     display: block;
     position: relative;
@@ -755,7 +755,7 @@ p, h1, h2, h3, h4, h5, h6, span
 
 
 //FOOTER
-.footer_tbk 
+.cg-footer_tbk 
 {
   display: block;
   background-color: $dark_purple;
@@ -852,7 +852,7 @@ p, h1, h2, h3, h4, h5, h6, span
       margin-top: 2rem;
     }
   }
-  .right 
+  .cg-right 
   {
     text-align: right;
     a 
@@ -889,7 +889,7 @@ p, h1, h2, h3, h4, h5, h6, span
 
 //POP UP LOGIN
 
-.pop_background
+.cg-pop_background
 {
   background-color: rgba($black, 0.85);
   width: 100vw;
@@ -900,7 +900,7 @@ p, h1, h2, h3, h4, h5, h6, span
   z-index: 20;
   display: none;
 }
-.pop_wrapper
+.cg-pop_wrapper
 {
   background-color: transparent;
   width: 100vw;
@@ -912,7 +912,7 @@ p, h1, h2, h3, h4, h5, h6, span
   @include flex_column;
   justify-content: center;
   display: none;
-  .pop_content
+  .cg-pop_content
   {
     width: 80vw;
     height: 50vh;
@@ -923,7 +923,7 @@ p, h1, h2, h3, h4, h5, h6, span
     {
       width: 90vw;
     }
-    .pop_nav
+    .cg-pop_nav
     {
       z-index: 23;
       background-color: $purple;
@@ -970,7 +970,7 @@ p, h1, h2, h3, h4, h5, h6, span
         }
       }
     }
-    .pop_body 
+    .cg-pop_body 
     {
       @include flex_column;
       justify-content: center;
@@ -990,7 +990,7 @@ p, h1, h2, h3, h4, h5, h6, span
   }
 }
 
-.form_pop
+.cg-form_pop
 {
   @include flex_column;
   justify-content: center;
@@ -998,14 +998,14 @@ p, h1, h2, h3, h4, h5, h6, span
   width: 100%;
   height: auto;
   text-align: center;
-  .input 
+  .cg-input 
   {
     display: inline-block;
     width: 12.4rem;
     height: 2.4rem;
     position: relative;
     margin-bottom: 0.5rem;
-    .input_btn
+    .cg-input_btn
     {
       position: absolute;
       top: 0;
@@ -1061,7 +1061,7 @@ p, h1, h2, h3, h4, h5, h6, span
       left: 0;
       @include animate;
     }
-    .icon-caret_menu
+    .cg-icon-caret_menu
     {
       position: absolute;
       top: 1.05rem;
@@ -1102,7 +1102,7 @@ p, h1, h2, h3, h4, h5, h6, span
         background-color: $white;
         color: $purple;
       }
-      .icon-caret_menu
+      .cg-icon-caret_menu
       {
         color: $white;
       }
@@ -1116,7 +1116,7 @@ p, h1, h2, h3, h4, h5, h6, span
 }
 
 // VIEW SPACE
-.views
+.cg-views
 {
   background-color: $gray;
   display: block;
@@ -1127,7 +1127,7 @@ p, h1, h2, h3, h4, h5, h6, span
   {
     margin-top: 0rem;
   }
-  .view_wrapper
+  .cg-view_wrapper
   {
     background-color: $white;
     padding-top: 4rem;
