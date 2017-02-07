@@ -49,10 +49,12 @@ $lg_absolute: "(min-width: 1200px)";
 //COLORES
 $white: #ffffff;
 $black: #383838;
+$deep_black: #000000;
 $gray: #F4F4F4;
 $dark_purple: #302A3A;
 $purple: #483078;
 $violet: #604878;
+$red: #BC0033;
 
 //AUX MIXINGS 
 @mixin zero 
@@ -108,7 +110,7 @@ $violet: #604878;
 
 ::-webkit-scrollbar-thumb 
 {
-  background: $violet;
+  background: $black;
   @include animate;
 }
  
@@ -249,7 +251,7 @@ p, h1, h2, h3, h4, h5, h6, span
       background-color: transparent;
     } 
   }
-  background-color: $dark_purple;
+  background-color: $deep_black;
   z-index: 2;
   .cg-main
   {
@@ -264,57 +266,6 @@ p, h1, h2, h3, h4, h5, h6, span
       justify-content: center;
       align-items: flex-start;
       padding: 0rem;
-    }
-    .cg-bg
-    {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 2;
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-      &::after
-      {
-        content: "";
-        display: block;
-        background:
-        {
-          image: url(../img/bg_main_nav.svg);
-          size: cover;
-          position: center;
-          repeat: no-repeat;
-        }
-        opacity: 0.05;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 3;
-        height:  100%;
-        width: 100%;
-        //NAV ANIMATION
-        animation-name: nav_cycle;
-        animation-timing-function: ease;
-        animation-duration: 10s;
-        animation-iteration-count: infinite;
-        transform-style: preserve-3d;
-        @keyframes nav_cycle
-        {
-          from
-          { 
-            transform: scale(1) translateZ(0px) rotateY(0deg) rotateX(0deg);    
-          }
-          50%
-          {
-            transform: scale(1.5) translateZ(10px) rotateY(45deg) rotateX(45deg);
-          }
-          to
-          { 
-            transform: scale(1) translateZ(0px) rotateY(0deg) rotateX(0deg);
-          }
-        }
-      }
     }
     .cg-home
     {
@@ -387,12 +338,14 @@ p, h1, h2, h3, h4, h5, h6, span
           color: $white;
           cursor: pointer;
           margin-right: 0.25rem;
+          text-decoration: none;
           @include animate;
           &:hover 
           {
-            background-color: rgba($violet, 0.5);
-            border-radius: 0.25rem 0.25rem 0rem 0rem;
-            color: $white;
+            .cg-text_li
+            {
+              text-decoration: underline;
+            }
           }
           .cg-text_li
           {
@@ -446,6 +399,7 @@ p, h1, h2, h3, h4, h5, h6, span
                 background-color: darken($gray, 5%);
                 position: relative;
                 text-align: left;
+                text-decoration: none;
                 .cg-icon-api_docs, .cg-icon-sdk, .cg-icon-plugins
                 {
                   display: inline;
@@ -457,6 +411,7 @@ p, h1, h2, h3, h4, h5, h6, span
                   display: inline;
                   position: relative;
                   width: auto;
+                  text-decoration: none;
                 }
               }
               .cg-link_tools
@@ -466,10 +421,12 @@ p, h1, h2, h3, h4, h5, h6, span
                 padding-left: 3.5rem;
                 @include animate;
                 background-color: $gray;
+                text-decoration: none;
                 &:hover
                 {
-                  background-color: $purple;
+                  background-color: $black;
                   color: $white;
+                  text-decoration: none;
                 }
               }
             }
@@ -477,7 +434,7 @@ p, h1, h2, h3, h4, h5, h6, span
           @media #{$sm}
           {
             display: block;
-            border-bottom: 1px solid $violet;
+            border-bottom: 1px solid $black;
             text-align: center;
             margin-right: 0;
             &:hover
@@ -498,24 +455,20 @@ p, h1, h2, h3, h4, h5, h6, span
             padding-right: 0rem;
             padding-left: 0rem;
             border-radius: 0;
+            text-decoration: none;
           }
         }
         .cg-active 
         {
-          background-color: $white;
-          color: $purple;
-          border-radius: 0.25rem 0.25rem 0rem 0rem;
-          &:hover
+          .cg-text_li
           {
-            background-color: $white;
-            color: $purple;
+            text-decoration: underline;
           }
-          @media #{$sm}
+          &:hover 
           {
-            border-radius: 0;
-            &:hover
+            .cg-text_li
             {
-              border-radius: 0;
+              text-decoration: underline;
             }
           }
         }
@@ -535,7 +488,7 @@ p, h1, h2, h3, h4, h5, h6, span
         }
         figure 
         {
-          background-color: $purple;
+          background-color: $black;
           display: inline-block;
           height: 100%;
           padding: 1rem 1.25rem 1rem 1.25rem;
@@ -552,7 +505,7 @@ p, h1, h2, h3, h4, h5, h6, span
             transform: rotate(-90deg);
             right: -0.8rem;
             top: 0.9rem;
-            color: $purple;
+            color: $black;
             @include animate;
           }
         }
@@ -561,7 +514,7 @@ p, h1, h2, h3, h4, h5, h6, span
           margin-left: -0.25rem;
           background-color: $white;
           border-radius: 0rem 0.25rem 0rem 0rem;
-          color: $purple;
+          color: $black;
           padding: 1rem 0.75rem 1rem 0.75rem;
           display: inline-block;
           font:
@@ -585,11 +538,11 @@ p, h1, h2, h3, h4, h5, h6, span
               color: $white;
             }
             background-color: $white;
-            color: $purple;
+            color: $black;
           }
           span 
           {
-            background-color: $purple;
+            background-color: $black;
             color: $white;
           }
         }
@@ -611,20 +564,20 @@ p, h1, h2, h3, h4, h5, h6, span
         width: 3.6rem;
         height: 3.6rem;
         border-radius: 0.25rem;
-        color: $purple;
+        color: $black;
         font-size: 1.05rem;
         line-height: 3.6rem;
         text-align: center;
         &:hover
         {
-          background-color: $purple;
+          background-color: $black;
           color: $white;
         }
       }
     }
     .cg-mobile_menu_active
     {
-      background-color: $purple;
+      background-color: $deep_black;
       color: $white;
     }
   }
@@ -705,14 +658,14 @@ p, h1, h2, h3, h4, h5, h6, span
     width: 15rem;
     display: inline-block;
     position: relative;
-    background-color: rgba($violet, 0.75);
+    background-color: rgba($gray, 0.75);
     padding: 1rem;
     font:
     {
       size: 1.6rem;
       weight: 700;
     }
-    color: $white;
+    color: $black;
     text-align: left;
     z-index: 1;
     margin-left: 8rem;
@@ -730,7 +683,7 @@ p, h1, h2, h3, h4, h5, h6, span
   {
     display: block;
     position: relative;
-    color: $black;
+    color: $red;
     font:
     {
       size: 1.2rem;
@@ -758,7 +711,7 @@ p, h1, h2, h3, h4, h5, h6, span
 .cg-footer_tbk 
 {
   display: block;
-  background-color: $dark_purple;
+  background-color: $red;
   padding: 1rem 4rem 1rem 4rem;
   width: 100vw;
   height: auto;
@@ -819,7 +772,7 @@ p, h1, h2, h3, h4, h5, h6, span
       display: block;
       position: relative;
       margin: 0 auto;
-      background-color: $purple;
+      background-color: $deep_black;
       padding: 0.5rem 1rem 0.5rem 1rem;
       border-radius: 0.25rem;
       margin-top: 2rem;
@@ -827,7 +780,7 @@ p, h1, h2, h3, h4, h5, h6, span
       @include animate;
       &:hover 
       {
-        background-color: $violet;
+        background-color: $black;
         border-bottom: 0;
       }
     }
@@ -926,7 +879,7 @@ p, h1, h2, h3, h4, h5, h6, span
     .cg-pop_nav
     {
       z-index: 23;
-      background-color: $purple;
+      background-color: $red;
       color: $white;
       position: absolute; 
       top: 0;
@@ -953,9 +906,9 @@ p, h1, h2, h3, h4, h5, h6, span
       button 
       {
         background-color: $white;
-        color: $purple;
+        color: $deep_black;
         width: 2.4rem;
-        border: 1px solid $purple;
+        border: 1px solid $deep_black;
         height: 2.4rem;
         text-align: center;
         line-height: 2.4rem;
@@ -965,7 +918,7 @@ p, h1, h2, h3, h4, h5, h6, span
         @include animate;
         &:hover 
         {
-          background-color: $purple;
+          background-color: $black;
           color: $white;
         }
       }
@@ -1010,7 +963,7 @@ p, h1, h2, h3, h4, h5, h6, span
       position: absolute;
       top: 0;
       left: 0;
-      background-color: $purple;
+      background-color: $deep_black;
       color: $white;
       width: 2.4rem;
       height: 2.4rem;
@@ -1021,7 +974,7 @@ p, h1, h2, h3, h4, h5, h6, span
     }
     input 
     {
-      background-color: $violet;
+      background-color: $red;
       color: $white;
       width: 10rem;
       height: 2.4rem;
@@ -1043,12 +996,12 @@ p, h1, h2, h3, h4, h5, h6, span
     height: 3.6rem;
     border-radius: 0.25rem;
     overflow: hidden;
-    border: 1px solid $purple;
+    border: 1px solid $deep_black;
     cursor: pointer;
     @include animate;
     > i 
     {
-      background-color: $purple;
+      background-color: $deep_black;
       color: $white;
       font-size: 1.05rem;
       line-height: 3.6rem;
@@ -1067,7 +1020,7 @@ p, h1, h2, h3, h4, h5, h6, span
       top: 1.05rem;
       left: 3.3rem;
       font-size: 1.05rem;
-      color: $purple;
+      color: $deep_black;
       z-index: 23;
       transform: rotate(-90deg);
       @include animate;
@@ -1081,7 +1034,7 @@ p, h1, h2, h3, h4, h5, h6, span
       right: 0;
       top: 0;
       line-height: 3.6rem;
-      color: $purple;
+      color: $deep_black;
       font:
       {
         family: 'Titillium Web', sans-serif;
@@ -1100,7 +1053,7 @@ p, h1, h2, h3, h4, h5, h6, span
       i 
       {
         background-color: $white;
-        color: $purple;
+        color: $deep_black;
       }
       .cg-icon-caret_menu
       {
@@ -1108,7 +1061,7 @@ p, h1, h2, h3, h4, h5, h6, span
       }
       span 
       {
-        background-color: $purple;
+        background-color: $deep_black;
         color: $white;
       }
     }

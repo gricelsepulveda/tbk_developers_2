@@ -39,11 +39,20 @@ $(document).ready(function(){
           $(".cg-tools_drop").removeClass("cg-active");
         }
   });
-  $(".cg-sm_option a").click(function(){
+  $(".cg-li_menu").click(function(){
     $(".cg-submenu").css({
                         "height":''
                     });
+    $(".cg-tools_drop").removeClass("cg-active");
+    $(".cg-main_header > .cg-main > .cg-wrapper").css({
+                                              "height":''
+                                          });
+    $(".cg-main_header").css({
+                                "overflow-y":''
+                            });
+    $(".cg-mobile_menu").removeClass("cg-mobile_menu_active");
   });
+
   $(".cg-submenu").mouseleave(function(){
     $(".cg-submenu").css({
                         "height":''
